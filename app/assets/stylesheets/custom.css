@@ -1,6 +1,17 @@
 /* Bootstrap 3.4.1 подключается в макете (application.html.erb).
-   В Rails 8 вместо Sprockets используется Propshaft, поэтому
-   собственные стили лежат в обычном CSS-файле. */
+   В Rails 8 вместо Sprockets используется Propshaft, который не
+   компилирует Sass. Вложения (&) и переменные из главы 5.2.2
+   реализованы средствами современного CSS: вложенные правила и
+   пользовательские свойства (custom properties). */
+
+/* mixins, variables, etc. */
+
+:root {
+  --gray-darker: #222;
+  --gray: #555;
+  --gray-light: #777;
+  --gray-medium-light: #eaeaea;
+}
 
 /* universal */
 
@@ -18,10 +29,9 @@ textarea {
 
 .center {
   text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
+  h1 {
+    margin-bottom: 10px;
+  }
 }
 
 /* typography */
@@ -43,7 +53,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: var(--gray-light);
 }
 
 p {
@@ -57,16 +67,15 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-}
-
-#logo:hover {
-  color: #fff;
-  text-decoration: none;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 /* footer */
@@ -74,28 +83,23 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-}
-
-footer a {
-  color: #555;
-}
-
-footer a:hover {
-  color: #222;
-}
-
-footer small {
-  float: left;
-}
-
-footer ul {
-  float: right;
-  list-style: none;
-}
-
-footer ul li {
-  float: left;
-  margin-left: 15px;
+  border-top: 1px solid var(--gray-medium-light);
+  color: var(--gray-light);
+  a {
+    color: var(--gray);
+    &:hover {
+      color: var(--gray-darker);
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
 }
